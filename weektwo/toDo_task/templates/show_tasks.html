@@ -1,0 +1,32 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-bordered" style="width: 80%; margin:auto; margin-top:20px;color:white">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in todo %}
+    {% if not i.is_completed %}
+      
+    <tr>
+      <th scope="row">{{i.taskTitle}}</th>
+      <td>{{i.taskDescription}}</td>
+      <td>Incomplete</td>
+      <td>
+        <a class="btn btn-danger" href="{% url 'delete_taskpage' i.id %}">Delete</a>
+        <a class="btn btn-primary" href="{% url 'edit_taskpage' i.id %}">Edit</a>
+        <a class="btn btn-success" href="{% url 'complete_taskpage' i.id %}">Complete</a>
+      </td>
+    </tr>
+    
+    {% endif %}
+   {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

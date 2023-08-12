@@ -1,0 +1,27 @@
+{% extends "home.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<table class="table table-bordered" style="width: 80%; margin:auto; margin-top:20px; color:white" >
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in task %}
+
+    {% if i.is_completed %}
+
+    <tr>
+      <th scope="row">{{i.taskTitle}}</th>
+      <td>{{i.taskDescription}}</td>
+      <td>Complete</td>
+
+    </tr>
+    {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
